@@ -1,9 +1,8 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { AppDataSource } from './data-source';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { AuthModule } from './auth/auth.module';
+import { AppDataSource } from './data-source';
 
 @Module({
   imports: [
@@ -12,8 +11,9 @@ import { ConfigModule } from '@nestjs/config';
       envFilePath: `.env`,
       isGlobal: true,
     }),
+    AuthModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
